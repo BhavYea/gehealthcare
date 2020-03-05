@@ -12,6 +12,12 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControl from "@material-ui/core/FormControl";
+import FormLabel from "@material-ui/core/FormLabel";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import { ButtonGroup } from "@material-ui/core";
 
 function Copyright() {
   return (
@@ -48,9 +54,14 @@ const useStyles = makeStyles(theme => ({
 
 export default function SignUp() {
   const classes = useStyles();
+  const [value, setValue] = React.useState("female");
+
+  const handleChange = event => {
+    setValue(event.target.value);
+  };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="s">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>{/* <LockOutlinedIcon /> */}</Avatar>
@@ -58,7 +69,7 @@ export default function SignUp() {
           Heading idhar likhni hai
         </Typography>
         <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
+          <Grid container spacing={2} justify="space-around">
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
@@ -93,6 +104,72 @@ export default function SignUp() {
                 autoComplete="age"
               />
             </Grid>
+            {/* // ! Sex Form */}
+            <Grid xs={4}>
+              <FormControl component="fieldset">
+                <FormLabel component="legend">Sex</FormLabel>
+                <RadioGroup
+                  defaultValue="female"
+                  aria-label="gender"
+                  name="radios"
+                >
+                  <FormControlLabel
+                    value="female"
+                    control={<Radio />}
+                    label="Female"
+                  />
+                  <FormControlLabel
+                    value="male"
+                    control={<Radio />}
+                    label="Male"
+                  />
+                </RadioGroup>
+              </FormControl>
+            </Grid>
+
+            {/* // ! Smoking Form */}
+            <Grid xs={4}>
+              <FormControl component="fieldset">
+                <FormLabel component="legend">Smoking Habits</FormLabel>
+                <RadioGroup
+                  defaultValue="current_smoker"
+                  aria-label="smoker"
+                  name="radios"
+                >
+                  <FormControlLabel
+                    value="current_smoker"
+                    control={<Radio />}
+                    label="I currently smoke"
+                  />
+                  <FormControlLabel
+                    value="ex_smoker"
+                    control={<Radio />}
+                    label="I am an ex-smoker"
+                  />
+                  <FormControlLabel
+                    value="not_smoker"
+                    control={<Radio />}
+                    label="I don't smoke"
+                  />
+                </RadioGroup>
+              </FormControl>
+            </Grid>
+
+            {/* // ! Obseity Form */}
+            <Grid xs={3}>
+              <FormControl component="fieldset">
+                <FormLabel component="legend">Obesity</FormLabel>
+                <RadioGroup
+                  defaultValue="Yes"
+                  aria-label="obesity"
+                  name="radios"
+                >
+                  <FormControlLabel value="Y" control={<Radio />} label="Yes" />
+                  <FormControlLabel value="N" control={<Radio />} label="No" />
+                </RadioGroup>
+              </FormControl>
+            </Grid>
+
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="weight"
@@ -129,14 +206,24 @@ export default function SignUp() {
                 autoComplete="current-password"
               />
             </Grid> */}
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
               <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color="primary" />}
                 label="I want to receive inspiration, marketing promotions and updates via email."
               />
+            </Grid> */}
+            <Grid justify="center">
+              <ButtonGroup
+                size="large"
+                color="Primary"
+                aria-label="large outlined primary button group"
+              >
+                <Button>Continue to Standard A</Button>
+                <Button>Continue to Standard B</Button>
+              </ButtonGroup>
             </Grid>
           </Grid>
-          <Button
+          {/* <Button
             type="submit"
             fullWidth
             variant="contained"
@@ -144,14 +231,8 @@ export default function SignUp() {
             className={classes.submit}
           >
             Sign Up
-          </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="#" variant="body2">
-                Already have an account? Sign in
-              </Link>
-            </Grid>
-          </Grid>
+          </Button> */}
+          <Grid container justify="flex-end"></Grid>
         </form>
       </div>
       <Box mt={5}>
