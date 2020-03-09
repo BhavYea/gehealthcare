@@ -1,13 +1,13 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Router, Route, IndexRoute } from 'react-router';
 
 /**
  * Import all page components here
  */
 import App from './components/App';
 import MainPage from './Components/MainPage';
-import SomePage from './components/SomePage';
-import SomeOtherPage from './components/SomeOtherPage';
+// import SomePage from './components/SomePage';
+// import SomeOtherPage from './components/SomeOtherPage';
 
 /**
  * All routes go here.

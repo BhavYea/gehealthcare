@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "D:\\Stuff\\Coding\\React\\g_e_healthcare"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"unistd.h": "c",
+			"stdio.h": "c",
+			"libc-header-start.h": "c"
+		},
+		"C_Cpp.errorSquiggles": "Disabled"
+	}
+}

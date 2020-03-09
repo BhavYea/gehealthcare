@@ -1,0 +1,27 @@
+['', '', '', 
+    'BMI', 
+    '', '', '',
+    '', '', '', 
+    'Function Class',
+    'St Elevation',
+    '', '', '', '', '', '', '', '',
+    'Region RWMA', 
+    'Cath', 
+    '', '', '','', '', '', '', '', 
+    'Airway disease_N','Airway disease_Y', // done
+    'Thyroid Disease_N', 'Thyroid Disease_Y', //done
+    'CHF_N','CHF_Y', // done
+    'DLP_N', 'DLP_Y', // done
+    'Weak Peripheral Pulse_N','Weak Peripheral Pulse_Y', //done
+    'Systolic Murmur_N', 'Systolic Murmur_Y', //doneW
+    'Diastolic Murmur_N', 'Diastolic Murmur_Y', //done
+    'Dyspnea_N', 'Dyspnea_Y',//done
+    'Atypical_N', 'Atypical_Y', //done
+    'Nonanginal_N', 'Nonanginal_Y',//done
+    'LowTH Ang_N', 'LowTH Ang_Y', //done
+    'LVH_N', 'LVH_Y', //done
+    'Poor R Progression_N','Poor R Progression_Y', // done
+    'BBB_LBBB', 'BBB_N', 'BBB_RBBB', // done {confusion}
+    'VHD_Moderate','VHD_N', 'VHD_Severe', 'VHD_mild'] //done
+
+    // ! fullforms needed for all { or should use abbreviations only? }

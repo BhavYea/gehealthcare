@@ -5,7 +5,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
+// import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 // import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -18,6 +18,14 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import { ButtonGroup } from "@material-ui/core";
+
+import StandardA from "./StandardB";
+import StandardB from "./StandardA";
+import { Link } from "react-router-dom";
+
+export const LinkComponent = props => {
+  return <Link {...props} />;
+};
 
 function Copyright() {
   return (
@@ -218,8 +226,12 @@ export default function SignUp() {
                 color="Primary"
                 aria-label="large outlined primary button group"
               >
-                <Button>Continue to Standard A</Button>
-                <Button>Continue to Standard B</Button>
+                <Button component={LinkComponent} to="/standarda">
+                  Standard A
+                </Button>
+                <Button component={LinkComponent} to="/standardb">
+                  Standard B
+                </Button>
               </ButtonGroup>
             </Grid>
           </Grid>
