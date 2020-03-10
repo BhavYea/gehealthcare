@@ -57,9 +57,9 @@ export default function SignUp() {
         {/* <Typography component="h1" variant="h5">
           Standard A
         </Typography> */}
-        <Button variant="outlined" size="large" color="primary">
+        <Typography variant="h2" class="mb-3">
           Standard A
-        </Button>
+        </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2} justify="space-around">
             {/* // ! Blood Form */}
@@ -318,14 +318,28 @@ export default function SignUp() {
                   aria-label="Chest Pain"
                   name="radios"
                 >
-                  <FormControlLabel value="Severe" control={<Radio />} label="Severe" />
-                  <FormControlLabel value="Moderate" control={<Radio />} label="Moderate" />
-                  <FormControlLabel value="Mild" control={<Radio />} label="Mild" />
+                  <FormControlLabel
+                    value="Severe"
+                    control={<Radio />}
+                    label="Severe"
+                  />
+                  <FormControlLabel
+                    value="Moderate"
+                    control={<Radio />}
+                    label="Moderate"
+                  />
+                  <FormControlLabel
+                    value="Mild"
+                    control={<Radio />}
+                    label="Mild"
+                  />
                   <FormControlLabel value="No" control={<Radio />} label="No" />
                 </RadioGroup>
               </FormControl>
             </Grid>
-            <Button variant="contained" color="primary" size="large">Submit</Button>
+            <Button variant="contained" color="primary" size="large">
+              Submit
+            </Button>
 
             {/* <Grid item xs={12}>
               <TextField

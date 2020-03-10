@@ -65,13 +65,8 @@ export default function SignUp() {
   const handleSubmit = event => {
     event.preventDefault();
     console.log("====================================");
+    console.log("Form Data to dump in your stupid stupid pickle file which will be done by Abhisht (hopefully)");
     console.log(JSON.stringify(state));
-    console.log("====================================");
-  };
-
-  const print = () => {
-    console.log("====================================");
-    console.log(state);
     console.log("====================================");
   };
 
@@ -84,9 +79,6 @@ export default function SignUp() {
           Heading idhar likhni hai
         </Typography>
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
-          <Button type="submit" label="Submit">
-            Submit
-          </Button>
           <Grid container spacing={2} justify="space-around">
             <Grid item xs={12} sm={6}>
               <TextField
@@ -136,7 +128,7 @@ export default function SignUp() {
               <FormControl component="fieldset">
                 <FormLabel component="legend">Sex</FormLabel>
                 <RadioGroup
-                  defaultValue="female"
+                  // defaultValue="female"
                   aria-label="gender"
                   name="radios"
                   // value={sex}
@@ -163,11 +155,12 @@ export default function SignUp() {
               <FormControl component="fieldset">
                 <FormLabel component="legend">Smoking Habits</FormLabel>
                 <RadioGroup
-                  defaultValue="current_smoker"
+                  // defaultValue="current_smoker"
                   aria-label="smoker"
                   name="radios"
-                onChange={e => {state.smoking_habits = e.target.value}}
-
+                  onChange={e => {
+                    state.smoking_habits = e.target.value;
+                  }}
                 >
                   <FormControlLabel
                     value="current_smoker"
@@ -193,11 +186,12 @@ export default function SignUp() {
               <FormControl component="fieldset">
                 <FormLabel component="legend">Obesity</FormLabel>
                 <RadioGroup
-                  defaultValue="Yes"
+                  // defaultValue="Yes"
                   aria-label="obesity"
                   name="radios"
-                onChange={e => {state.obesity = e.target.value}}
-
+                  onChange={e => {
+                    state.obesity = e.target.value;
+                  }}
                 >
                   <FormControlLabel value="Y" control={<Radio />} label="Yes" />
                   <FormControlLabel value="N" control={<Radio />} label="No" />
@@ -215,8 +209,9 @@ export default function SignUp() {
                 id="weight"
                 label="Weight"
                 autoFocus
-                onChange={e => {state.weight = e.target.value}}
-
+                onChange={e => {
+                  state.weight = e.target.value;
+                }}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -229,8 +224,9 @@ export default function SignUp() {
                 id="height"
                 label="Height"
                 autoFocus
-                onChange={e => {state.height = e.target.value}}
-
+                onChange={e => {
+                  state.height = e.target.value;
+                }}
               />
             </Grid>
             {/* <Grid item xs={12}>
@@ -275,7 +271,11 @@ export default function SignUp() {
           >
             Sign Up
           </Button> */}
-          <Grid container justify="flex-end"></Grid>
+          <Grid container justify="flex-end">
+            <Button variant="contained" color="secondary" type="submit" label="Submit" size="small">
+              Dummy Submit button
+            </Button>
+          </Grid>
         </form>
       </div>
     </Container>
