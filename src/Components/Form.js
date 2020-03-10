@@ -47,22 +47,32 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-var data;
-
-const handleSubmit = e => {
-  e.preventDefault();
-  data = new FormData(e.value);
-  console.log("====================================");
-  console.log(data);
-  console.log("====================================");
-};
-
 export default function SignUp() {
   const classes = useStyles();
-  const [value, setValue] = React.useState("female");
+  // const [sex, setValue] = React.useState("female");
 
-  const handleChange = event => {
-    setValue(event.target.value);
+  var state = {
+    first_name: "",
+    last_name: "",
+    age: "",
+    sex: "",
+    smoking_habits: "",
+    obesity: "",
+    weight: "",
+    height: ""
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log("====================================");
+    console.log(JSON.stringify(state));
+    console.log("====================================");
+  };
+
+  const print = () => {
+    console.log("====================================");
+    console.log(state);
+    console.log("====================================");
   };
 
   return (
@@ -73,11 +83,13 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Heading idhar likhni hai
         </Typography>
-        <form className={classes.form} noValidate>
-          <button>Send Data!</button>
+        <form className={classes.form} noValidate onSubmit={handleSubmit}>
+          <Button type="submit" label="Submit">
+            Submit
+          </Button>
           <Grid container spacing={2} justify="space-around">
             <Grid item xs={12} sm={6}>
-              <TextField onSubmit={handleSubmit}
+              <TextField
                 autoComplete="fname"
                 name="firstName"
                 variant="outlined"
@@ -86,6 +98,9 @@ export default function SignUp() {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                onChange={e => {
+                  state.first_name = e.target.value;
+                }}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -97,6 +112,9 @@ export default function SignUp() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                onChange={e => {
+                  state.last_name = e.target.value;
+                }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -108,6 +126,9 @@ export default function SignUp() {
                 label="Age"
                 name="age"
                 autoComplete="age"
+                onChange={e => {
+                  state.age = e.target.value;
+                }}
               />
             </Grid>
             {/* // ! Sex Form */}
@@ -118,6 +139,10 @@ export default function SignUp() {
                   defaultValue="female"
                   aria-label="gender"
                   name="radios"
+                  // value={sex}
+                  onChange={e => {
+                    state.sex = e.target.value;
+                  }}
                 >
                   <FormControlLabel
                     value="female"
@@ -141,6 +166,8 @@ export default function SignUp() {
                   defaultValue="current_smoker"
                   aria-label="smoker"
                   name="radios"
+                onChange={e => {state.smoking_habits = e.target.value}}
+
                 >
                   <FormControlLabel
                     value="current_smoker"
@@ -169,6 +196,8 @@ export default function SignUp() {
                   defaultValue="Yes"
                   aria-label="obesity"
                   name="radios"
+                onChange={e => {state.obesity = e.target.value}}
+
                 >
                   <FormControlLabel value="Y" control={<Radio />} label="Yes" />
                   <FormControlLabel value="N" control={<Radio />} label="No" />
@@ -186,6 +215,8 @@ export default function SignUp() {
                 id="weight"
                 label="Weight"
                 autoFocus
+                onChange={e => {state.weight = e.target.value}}
+
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -198,6 +229,8 @@ export default function SignUp() {
                 id="height"
                 label="Height"
                 autoFocus
+                onChange={e => {state.height = e.target.value}}
+
               />
             </Grid>
             {/* <Grid item xs={12}>
