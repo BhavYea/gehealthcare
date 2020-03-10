@@ -27,19 +27,6 @@ export const LinkComponent = props => {
   return <Link {...props} />;
 };
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -60,6 +47,16 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+var data;
+
+const handleSubmit = e => {
+  e.preventDefault();
+  data = new FormData(e.value);
+  console.log("====================================");
+  console.log(data);
+  console.log("====================================");
+};
+
 export default function SignUp() {
   const classes = useStyles();
   const [value, setValue] = React.useState("female");
@@ -69,7 +66,7 @@ export default function SignUp() {
   };
 
   return (
-    <Container component="main" maxWidth="s">
+    <Container component="main" maxWidth="xl">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>{/* <LockOutlinedIcon /> */}</Avatar>
@@ -77,9 +74,10 @@ export default function SignUp() {
           Heading idhar likhni hai
         </Typography>
         <form className={classes.form} noValidate>
+          <button>Send Data!</button>
           <Grid container spacing={2} justify="space-around">
             <Grid item xs={12} sm={6}>
-              <TextField
+              <TextField onSubmit={handleSubmit}
                 autoComplete="fname"
                 name="firstName"
                 variant="outlined"
@@ -113,7 +111,7 @@ export default function SignUp() {
               />
             </Grid>
             {/* // ! Sex Form */}
-            <Grid xs={4}>
+            <Grid item xs={4}>
               <FormControl component="fieldset">
                 <FormLabel component="legend">Sex</FormLabel>
                 <RadioGroup
@@ -136,7 +134,7 @@ export default function SignUp() {
             </Grid>
 
             {/* // ! Smoking Form */}
-            <Grid xs={4}>
+            <Grid item xs={4}>
               <FormControl component="fieldset">
                 <FormLabel component="legend">Smoking Habits</FormLabel>
                 <RadioGroup
@@ -164,7 +162,7 @@ export default function SignUp() {
             </Grid>
 
             {/* // ! Obseity Form */}
-            <Grid xs={3}>
+            <Grid item xs={3}>
               <FormControl component="fieldset">
                 <FormLabel component="legend">Obesity</FormLabel>
                 <RadioGroup
@@ -220,10 +218,10 @@ export default function SignUp() {
                 label="I want to receive inspiration, marketing promotions and updates via email."
               />
             </Grid> */}
-            <Grid justify="center">
+            <Grid container justify="center">
               <ButtonGroup
                 size="large"
-                color="Primary"
+                color="primary"
                 aria-label="large outlined primary button group"
               >
                 <Button component={LinkComponent} to="/standarda">
@@ -247,9 +245,6 @@ export default function SignUp() {
           <Grid container justify="flex-end"></Grid>
         </form>
       </div>
-      <Box mt={5}>
-        <Copyright />
-      </Box>
     </Container>
   );
 }

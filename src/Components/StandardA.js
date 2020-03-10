@@ -50,7 +50,7 @@ export default function SignUp() {
   };
 
   return (
-    <Container component="main" maxWidth="s">
+    <Container component="main" maxWidth="xl">
       <CssBaseline />
       <div className={classes.paper}>
         {/* <Avatar className={classes.avatar}><LockOutlinedIcon /></Avatar> */}
@@ -120,9 +120,9 @@ export default function SignUp() {
               />
             </Grid>
 
-            <Grid xs={1} />
+            <Grid item xs={1} />
             {/* // ! Edema Form */}
-            <Grid xs={2}>
+            <Grid item xs={2}>
               <FormControl component="fieldset">
                 <FormLabel component="legend">Edema</FormLabel>
                 <RadioGroup defaultValue="Yes" aria-label="Edema" name="radios">
@@ -133,7 +133,7 @@ export default function SignUp() {
             </Grid>
 
             {/* // ! Depression Form */}
-            <Grid xs={2}>
+            <Grid item xs={2}>
               <FormControl component="fieldset">
                 <FormLabel component="legend">Depression</FormLabel>
                 <RadioGroup defaultValue="Yes" aria-label="Edema" name="radios">
@@ -144,7 +144,7 @@ export default function SignUp() {
             </Grid>
 
             {/* // ! Chest Pain Form */}
-            <Grid xs={2}>
+            <Grid item xs={2}>
               <FormControl component="fieldset">
                 <FormLabel component="legend">Chest Pain</FormLabel>
                 <RadioGroup
@@ -159,7 +159,7 @@ export default function SignUp() {
             </Grid>
 
             {/* // ! CRF Form */}
-            <Grid xs={2}>
+            <Grid item xs={2}>
               <FormControl component="fieldset">
                 <FormLabel component="legend">CRF</FormLabel>
                 <RadioGroup
@@ -174,7 +174,7 @@ export default function SignUp() {
             </Grid>
 
             {/* // ! CVA Form */}
-            <Grid xs={2}>
+            <Grid item xs={2}>
               <FormControl component="fieldset">
                 <FormLabel component="legend">CVA</FormLabel>
                 <RadioGroup
@@ -187,7 +187,7 @@ export default function SignUp() {
                 </RadioGroup>
               </FormControl>
             </Grid>
-            <Grid xs={1} />
+            <Grid item xs={1} />
 
             {/* // ! Blood cells Form */}
             <Grid item xs={3}>
@@ -249,7 +249,7 @@ export default function SignUp() {
               "LowTH Ang",
               "LVH"
             ].map(p => (
-              <Grid xs={4}>
+              <Grid item xs={4} key={p}>
                 <FormControl component="fieldset">
                   <FormLabel component="legend">{p}</FormLabel>
                   <RadioGroup
@@ -274,7 +274,7 @@ export default function SignUp() {
               </Grid>
             ))}
 
-            <Grid xs={4}>
+            <Grid item xs={4}>
               <FormControl component="fieldset">
                 <FormLabel component="legend">Poor R Progression</FormLabel>
                 <RadioGroup
@@ -288,7 +288,7 @@ export default function SignUp() {
               </FormControl>
             </Grid>
 
-            <Grid xs={4}>
+            <Grid item xs={4}>
               <FormControl component="fieldset">
                 <FormLabel component="legend">BBB</FormLabel>
                 <RadioGroup
@@ -310,7 +310,7 @@ export default function SignUp() {
                 </RadioGroup>
               </FormControl>
             </Grid>
-            <Grid xs={4}>
+            <Grid item xs={4}>
               <FormControl component="fieldset">
                 <FormLabel component="legend">VHD</FormLabel>
                 <RadioGroup
@@ -318,11 +318,14 @@ export default function SignUp() {
                   aria-label="Chest Pain"
                   name="radios"
                 >
-                  <FormControlLabel value="Y" control={<Radio />} label="Yes" />
-                  <FormControlLabel value="N" control={<Radio />} label="No" />
+                  <FormControlLabel value="Severe" control={<Radio />} label="Severe" />
+                  <FormControlLabel value="Moderate" control={<Radio />} label="Moderate" />
+                  <FormControlLabel value="Mild" control={<Radio />} label="Mild" />
+                  <FormControlLabel value="No" control={<Radio />} label="No" />
                 </RadioGroup>
               </FormControl>
             </Grid>
+            <Button variant="contained" color="primary" size="large">Submit</Button>
 
             {/* <Grid item xs={12}>
               <TextField
