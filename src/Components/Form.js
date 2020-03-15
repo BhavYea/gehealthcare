@@ -19,13 +19,11 @@ import FormLabel from "@material-ui/core/FormLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import { ButtonGroup } from "@material-ui/core";
 
-import StandardA from "./StandardB";
-import StandardB from "./StandardA";
 import { Link } from "react-router-dom";
 
-export const LinkComponent = props => {
-  return <Link {...props} />;
-};
+// const LinkComponent = props => {
+//   return <Link {...props} />;
+// };
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -65,7 +63,9 @@ export default function SignUp() {
   const handleSubmit = event => {
     event.preventDefault();
     console.log("====================================");
-    console.log("Form Data to dump in your stupid stupid pickle file which will be done by Abhisht (hopefully)");
+    console.log(
+      "Form Data to dump in your stupid stupid pickle file which will be done by Abhisht (hopefully)"
+    );
     console.log(JSON.stringify(state));
     console.log("====================================");
   };
@@ -76,7 +76,7 @@ export default function SignUp() {
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>{/* <LockOutlinedIcon /> */}</Avatar>
         <Typography component="h1" variant="h5">
-          Heading idhar likhni hai
+          CAD Detection Program
         </Typography>
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <Grid container spacing={2} justify="space-around">
@@ -253,26 +253,23 @@ export default function SignUp() {
                 color="primary"
                 aria-label="large outlined primary button group"
               >
-                <Button component={LinkComponent} to="/standarda">
+                <Button component={Link} to="/standarda">
                   Standard A
                 </Button>
-                <Button component={LinkComponent} to="/standardb">
+                <Button component={Link} to="/standardb">
                   Standard B
                 </Button>
               </ButtonGroup>
             </Grid>
           </Grid>
-          {/* <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign Up
-          </Button> */}
           <Grid container justify="flex-end">
-            <Button variant="contained" color="secondary" type="submit" label="Submit" size="small">
+            <Button
+              variant="contained"
+              color="secondary"
+              type="submit"
+              label="Submit"
+              size="small"
+            >
               Dummy Submit button
             </Button>
           </Grid>

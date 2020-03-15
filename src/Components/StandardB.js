@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
@@ -13,6 +13,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Slider from "@material-ui/core/Slider";
 import { FormControl, FormLabel, RadioGroup, Radio } from "@material-ui/core";
+
+const LinkComponent = props => {
+  return <Link {...props} />;
+};
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -87,17 +91,58 @@ const thal = [
   }
 ];
 
+var state = {
+  chol: "",
+  fbs: "",
+  cp: "",
+  restecg: "",
+  ca: "",
+  thal: "",
+  exang: "",
+  slope: "",
+  thalach: "",
+  oldpeak: ""
+};
+
 export default function StandardB() {
   const classes = useStyles();
+  const [sub, setSub] = useState(false);
+  const [loadElement, setLoad] = useState("");
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log("====================================");
+    console.log(
+      "Form Data to dump in your stupid stupid pickle file which will be done by Abhisht (hopefully)"
+    );
+    console.log(JSON.stringify(state));
+    console.log("====================================");
+    setSub(true);
+  };
+
+  useEffect(() => {
+    if (sub == true) {
+      setLoad(
+        <Button
+          component={Link}
+          to="./result"
+          color="primary"
+          variant="contained"
+        >
+          Results
+        </Button>
+      );
+    }
+  }, [sub]);
 
   return (
     <Container component="main" maxWidth="xl">
       <CssBaseline />
       <div className={classes.paper}>
-        <Typography variant="h2" class="mb-3">
+        <Typography variant="h4" className="mb-3">
           Standard B
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <Grid container spacing={2} justify="space-around">
             <Grid item xs={3}>
               <TextField
@@ -108,6 +153,9 @@ export default function StandardB() {
                 label="Cholesterol"
                 name="chol"
                 autoComplete="chol"
+                onChange={e => {
+                  state.chol = e.target.value;
+                }}
               />
             </Grid>
             <Grid item xs={3}>
@@ -119,17 +167,9 @@ export default function StandardB() {
                 label="Fasting Blood Sugar"
                 name="fbs"
                 autoComplete="fbs"
-              />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="fbs"
-                label="Fasting Blood Sugar"
-                name="fbs"
-                autoComplete="fbs"
+                onChange={e => {
+                  state.fbs = e.target.value;
+                }}
               />
             </Grid>
             <Grid item xs={3}>
@@ -158,6 +198,9 @@ export default function StandardB() {
                   step={null}
                   valueLabelDisplay="auto"
                   marks={cp}
+                  onChange={(e, val) => {
+                    state.cp = val;
+                  }}
                 />
               </Grid>
               <Grid item xs={4}>
@@ -173,6 +216,9 @@ export default function StandardB() {
                   step={null}
                   valueLabelDisplay="auto"
                   marks={restecg}
+                  onChange={(e, val) => {
+                    state.restecg = val;
+                  }}
                 />
               </Grid>
             </Grid>
@@ -192,6 +238,9 @@ export default function StandardB() {
                   step={1}
                   valueLabelDisplay="auto"
                   marks={true}
+                  onChange={(e, val) => {
+                    state.ca = val;
+                  }}
                 />
               </Grid>
               <Grid item xs={4}>
@@ -209,6 +258,9 @@ export default function StandardB() {
                   step={1}
                   valueLabelDisplay="auto"
                   marks={thal}
+                  onChange={(e, val) => {
+                    state.thal = val;
+                  }}
                 />
               </Grid>
             </Grid>
@@ -221,17 +273,19 @@ export default function StandardB() {
                       Exercise Induced Angina
                     </FormLabel>
                     <RadioGroup
-                      defaultValue="Y"
                       aria-label="exang"
                       name="radios"
+                      onChange={e => {
+                        state.exang = e.target.value;
+                      }}
                     >
                       <FormControlLabel
-                        value="Y"
+                        value="1"
                         control={<Radio />}
                         label="Yes"
                       />
                       <FormControlLabel
-                        value="N"
+                        value="0"
                         control={<Radio />}
                         label="No"
                       />
@@ -244,8 +298,11 @@ export default function StandardB() {
                     </FormLabel>
                     <RadioGroup
                       defaultValue="1"
-                      aria-label="exang"
+                      aria-label="slope"
                       name="radios"
+                      onChange={e => {
+                        state.slope = e.target.value;
+                      }}
                     >
                       <FormControlLabel
                         value="1"
@@ -279,6 +336,9 @@ export default function StandardB() {
                     label="Max Heart Rate"
                     name="thalach"
                     autoComplete="thalach"
+                    onChange={e => {
+                      state.thalach = e.target.value;
+                    }}
                   />
                   <br />
                   <br />
@@ -291,13 +351,29 @@ export default function StandardB() {
                     label="oldpeak"
                     name="oldpeak"
                     autoComplete="oldpeak"
+                    onChange={e => {
+                      state.oldpeak = e.target.value;
+                    }}
                   />
                 </Grid>
               </Grid>
             </Grid>
-            <Button variant="contained" color="primary" size="large">
-              Submit
-            </Button>
+            <Grid container direction="row" justify="space-evenly">
+              <Grid item>
+                <Button
+                  type="submit"
+                  label="submit"
+                  variant="contained"
+                  color="primary"
+                  disabled={sub}
+                  // component={Link}
+                  // to='/result'
+                >
+                  Submit
+                </Button>
+              </Grid>
+              <Grid item>{loadElement}</Grid>
+            </Grid>
           </Grid>
         </form>
         <br />

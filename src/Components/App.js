@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Form from "./Form";
 import StandardA from "./StandardA";
 import StandardB from "./StandardB";
+import Result from "./Result";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           {/* <Form /> */}
           <Route path="/standarda" exact component={StandardA} />
           <Route path="/standardb" exact component={StandardB} />
+          <Route path="/result" exact component={Result} />
           <StandardB />
         </Switch>
       </Router>

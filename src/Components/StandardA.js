@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -18,8 +18,9 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import { ButtonGroup } from "@material-ui/core";
+import ReactLoading from "react-loading";
 
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -41,13 +42,68 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignUp() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState("female");
+var state = {
+  bp: "",
+  pr: "",
+  fbs: "",
+  cr: "",
+  tg: "",
+  edema: "",
+  dep: "",
+  cp: "",
+  crf: "",
+  cva: "",
+  wbc: "",
+  lymph: "",
+  neut: "",
+  plt: "",
+  ad: "",
+  th: "",
+  chf: "",
+  dlp: "",
+  wpp: "",
+  sm: "",
+  dm: "",
+  dysp: "",
+  atypical: "",
+  nonanginal: "",
+  lowTHang: "",
+  lvh: "",
+  prp: "",
+  bbb: "",
+  vhd: ""
+};
 
-  const handleChange = event => {
-    setValue(event.target.value);
+export default function StandardA() {
+  const classes = useStyles();
+  const [sub, setSub] = useState(false);
+  const [loadElement, setLoad] = useState("");
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log("====================================");
+    console.log(
+      "Form Data to dump in your stupid stupid pickle file which will be done by Abhisht (hopefully)"
+    );
+    console.log(JSON.stringify(state));
+    console.log("====================================");
+    setSub(true);
   };
+
+  useEffect(() => {
+    if (sub == true) {
+      setLoad(
+        <Button
+          component={Link}
+          to="./result"
+          color="primary"
+          variant="contained"
+        >
+          Results
+        </Button>
+      );
+    }
+  }, [sub]);
 
   return (
     <Container component="main" maxWidth="xl">
@@ -57,10 +113,10 @@ export default function SignUp() {
         {/* <Typography component="h1" variant="h5">
           Standard A
         </Typography> */}
-        <Typography variant="h2" class="mb-3">
+        <Typography variant="h4" className="mb-3">
           Standard A
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <Grid container spacing={2} justify="space-around">
             {/* // ! Blood Form */}
             <Grid item xs={12} sm={6}>
@@ -73,6 +129,7 @@ export default function SignUp() {
                 id="bp"
                 label="Blood Pressure"
                 autoFocus
+                onChange={e => (state.bp = e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -84,6 +141,7 @@ export default function SignUp() {
                 label="PR"
                 name="pr"
                 autoComplete="pr"
+                onChange={e => (state.pr = e.target.value)}
               />
             </Grid>
             <Grid item xs={4}>
@@ -95,6 +153,7 @@ export default function SignUp() {
                 label="FBS"
                 name="FBS"
                 autoComplete="fbs"
+                onChange={e => (state.fbs = e.target.value)}
               />
             </Grid>
             <Grid item xs={4}>
@@ -106,6 +165,7 @@ export default function SignUp() {
                 label="CR"
                 name="cr"
                 autoComplete="cr"
+                onChange={e => (state.cr = e.target.value)}
               />
             </Grid>
             <Grid item xs={4}>
@@ -117,6 +177,7 @@ export default function SignUp() {
                 label="TG"
                 name="tg"
                 autoComplete="tg"
+                onChange={e => (state.tg = e.target.value)}
               />
             </Grid>
 
@@ -125,7 +186,11 @@ export default function SignUp() {
             <Grid item xs={2}>
               <FormControl component="fieldset">
                 <FormLabel component="legend">Edema</FormLabel>
-                <RadioGroup defaultValue="Yes" aria-label="Edema" name="radios">
+                <RadioGroup
+                  aria-label="Edema"
+                  name="radios"
+                  onChange={e => (state.edema = e.target.value)}
+                >
                   <FormControlLabel value="Y" control={<Radio />} label="Yes" />
                   <FormControlLabel value="N" control={<Radio />} label="No" />
                 </RadioGroup>
@@ -136,7 +201,11 @@ export default function SignUp() {
             <Grid item xs={2}>
               <FormControl component="fieldset">
                 <FormLabel component="legend">Depression</FormLabel>
-                <RadioGroup defaultValue="Yes" aria-label="Edema" name="radios">
+                <RadioGroup
+                  aria-label="dep"
+                  name="radios"
+                  onChange={e => (state.dep = e.target.value)}
+                >
                   <FormControlLabel value="Y" control={<Radio />} label="Yes" />
                   <FormControlLabel value="N" control={<Radio />} label="No" />
                 </RadioGroup>
@@ -151,6 +220,7 @@ export default function SignUp() {
                   defaultValue="Yes"
                   aria-label="Chest Pain"
                   name="radios"
+                  onChange={e => (state.cp = e.target.value)}
                 >
                   <FormControlLabel value="Y" control={<Radio />} label="Yes" />
                   <FormControlLabel value="N" control={<Radio />} label="No" />
@@ -166,6 +236,7 @@ export default function SignUp() {
                   defaultValue="Yes"
                   aria-label="Chest Pain"
                   name="radios"
+                  onChange={e => (state.crf = e.target.value)}
                 >
                   <FormControlLabel value="Y" control={<Radio />} label="Yes" />
                   <FormControlLabel value="N" control={<Radio />} label="No" />
@@ -181,6 +252,7 @@ export default function SignUp() {
                   defaultValue="Yes"
                   aria-label="Chest Pain"
                   name="radios"
+                  onChange={e => (state.cva = e.target.value)}
                 >
                   <FormControlLabel value="Y" control={<Radio />} label="Yes" />
                   <FormControlLabel value="N" control={<Radio />} label="No" />
@@ -199,6 +271,7 @@ export default function SignUp() {
                 label="WBC"
                 name="WBC"
                 autoComplete="wbc"
+                onChange={e => (state.wbc = e.target.value)}
               />
             </Grid>
             <Grid item xs={3}>
@@ -210,6 +283,7 @@ export default function SignUp() {
                 label="Lymph"
                 name="Lymph"
                 autoComplete="lymph"
+                onChange={e => (state.lymph = e.target.value)}
               />
             </Grid>
             <Grid item xs={3}>
@@ -221,6 +295,7 @@ export default function SignUp() {
                 label="Neut"
                 name="Neut"
                 autoComplete="Neut"
+                onChange={e => (state.neut = e.target.value)}
               />
             </Grid>
             <Grid item xs={3}>
@@ -232,23 +307,24 @@ export default function SignUp() {
                 label="PLT"
                 name="PLT"
                 autoComplete="plt"
+                onChange={e => (state.plt = e.target.value)}
               />
             </Grid>
 
             {[
-              "Airway disease",
-              "Thyroid Disease",
-              "CHF",
-              "DLP",
-              "Weak Peripheral Pulse",
-              "Systolic Murmur",
-              "Diastolic Murmur",
-              "Dyspnea",
-              "Atypical",
-              "Nonanginal",
-              "LowTH Ang",
-              "LVH"
-            ].map(p => (
+              ["Airway disease", state.ad],
+              ["Thyroid Disease", state.th],
+              ["CHF", state.chf],
+              ["DLP", state.dlp],
+              ["Weak Peripheral Pulse", state.wpp],
+              ["Systolic Murmur", state.sm],
+              ["Diastolic Murmur", state.dm],
+              ["Dyspnea", state.dysp],
+              ["Atypical", state.atypical],
+              ["Nonanginal", state.nonanginal],
+              ["LowTH Ang", state.lowTHang],
+              ["LVH", state.lvh]
+            ].map((p, i) => (
               <Grid item xs={4} key={p}>
                 <FormControl component="fieldset">
                   <FormLabel component="legend">{p}</FormLabel>
@@ -256,6 +332,8 @@ export default function SignUp() {
                     defaultValue="Yes"
                     aria-label="Chest Pain"
                     name="radios"
+                    // onChange={e => (p[1] = e.target.value)}
+                    onChange={e => console.log(state[i])}
                   >
                     <FormControlLabel
                       value="Y"
@@ -281,6 +359,7 @@ export default function SignUp() {
                   defaultValue="Yes"
                   aria-label="Chest Pain"
                   name="radios"
+                  onChange={e => (state.prp = e.target.value)}
                 >
                   <FormControlLabel value="Y" control={<Radio />} label="Yes" />
                   <FormControlLabel value="N" control={<Radio />} label="No" />
@@ -292,9 +371,9 @@ export default function SignUp() {
               <FormControl component="fieldset">
                 <FormLabel component="legend">BBB</FormLabel>
                 <RadioGroup
-                  defaultValue="Yes"
-                  aria-label="Chest Pain"
+                  aria-label="bbb"
                   name="radios"
+                  onChange={e => (state.bbb = e.target.value)}
                 >
                   <FormControlLabel
                     value="LBBB"
@@ -315,8 +394,9 @@ export default function SignUp() {
                 <FormLabel component="legend">VHD</FormLabel>
                 <RadioGroup
                   defaultValue="Yes"
-                  aria-label="Chest Pain"
+                  aria-label="VHD"
                   name="radios"
+                  onChange={e => (state.vhd = e.target.value)}
                 >
                   <FormControlLabel
                     value="Severe"
@@ -337,9 +417,22 @@ export default function SignUp() {
                 </RadioGroup>
               </FormControl>
             </Grid>
-            <Button variant="contained" color="primary" size="large">
-              Submit
-            </Button>
+            <Grid container direction="row" justify="space-evenly">
+              <Grid item>
+                <Button
+                  type="submit"
+                  label="submit"
+                  variant="contained"
+                  color="primary"
+                  disabled={sub}
+                  // component={Link}
+                  // to='/result'
+                >
+                  Submit
+                </Button>
+              </Grid>
+              <Grid item>{loadElement}</Grid>
+            </Grid>
 
             {/* <Grid item xs={12}>
               <TextField
