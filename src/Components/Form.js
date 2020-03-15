@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -47,18 +47,19 @@ const useStyles = makeStyles(theme => ({
 
 export default function SignUp() {
   const classes = useStyles();
-  // const [sex, setValue] = React.useState("female");
 
-  var state = {
-    first_name: "",
-    last_name: "",
-    age: "",
-    sex: "",
-    smoking_habits: "",
-    obesity: "",
-    weight: "",
-    height: ""
-  };
+  const // const [sex, setValue] = React.useState("female");
+
+    state = {
+      first_name: "",
+      last_name: "",
+      age: "",
+      sex: "",
+      smoking_habits: "",
+      obesity: "",
+      weight: "",
+      height: ""
+    };
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -270,7 +271,7 @@ export default function SignUp() {
               label="Submit"
               size="small"
             >
-              Dummy Submit button
+              Send Data to console button
             </Button>
           </Grid>
         </form>
